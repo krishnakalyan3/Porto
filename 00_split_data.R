@@ -7,6 +7,10 @@ library(readr)
 
 train_data <- read_csv('data/train.csv')
 
+# Replace -1s to NAs
+train_data[train_data == -1] <- NA
+glimpse(train_data)
+
 split = sample.split(train_data$target, SplitRatio = 0.95)
 
 train_split = subset(train_data, split == TRUE)

@@ -14,7 +14,7 @@ train_data$target <- as.factor(train_data$target)
 plot(train_data$target)
 
 formual1 <- formula(target ~ . - id)
-model <- gbm(formual1, family=binomial(link='logit'), data=train_data)
+model <- glm(formual1, family=binomial(link='logit'), data=train_data)
 
 # GLM model is rank deficient : insufficient information contained
 # in your data to estimate the model you desire
@@ -22,5 +22,8 @@ model <- gbm(formual1, family=binomial(link='logit'), data=train_data)
 gbm_model <- train(formual1, data=train_data, method="glmnet")
 summary(gbm_model)
 
+# TODO
 # Super Imablanced data set. Try to balance the classes
-
+# Understand GLMNet well
+# Read this good EDA https://www.kaggle.com/headsortails/nyc-taxi-eda-update-the-fast-the-curious
+# convert cateogrical values to factor (https://www.kaggle.com/captcalculator/logistic-regression-and-roc-curve-primer)
