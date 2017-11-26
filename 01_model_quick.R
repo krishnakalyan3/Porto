@@ -36,6 +36,6 @@ gbm_model <- train(formual1, data=x_traind, method="glmnet")
 test_yhat <- predict(gbm_model, dtest)
 test_yhat <- round(test_yhat, 4)
 
-submit_file <- data.frame(as.character(dtest$id), test_yhat)
+submit_file <- data.frame(as.integer(dtest$id), test_yhat)
 names(submit_file) <- c('id', 'target')
 write_csv(submit_file, 'submit_glmnet.csv')
